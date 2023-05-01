@@ -1,0 +1,43 @@
+{% extends 'PhoneReview/base.html' %}
+
+{% block title %}{{ object.name }} - PhoneRadar{% endblock %}
+
+{% block heading %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-12 col-md-4 d-flex flex-column flex-sm-row flex-md-column flex-lg-row gap-3">
+    <img src="{{ MEDIA_URL }}{{ object.image }}" class="model-img" alt="{{ object.name }}">
+
+    <div class="d-flex flex-column">
+      <h5>Launch Date</h5>
+      <p>{{ object.launch_date }}</p>
+      <h5>Operating System</h5>
+      <p>{{ object.platform }}</p>
+    </div>
+  </div>
+
+  <hr class="d-md-none">
+
+  <div class="col-12 col-md-8 d-flex gap-3">
+    <div class="vr d-none d-md-block"></div>
+    <div class="d-flex flex-column">
+      {% if reviews %}
+
+      <h5 class="pb-2">Reviews:</h5>
+      {% for review in reviews %}
+      <p>{{ review.article }}</p>
+      <small class="pb-4 text-body-secondary">{{ review.date_published }}</small>
+      {% endfor %}
+
+      {% else %}
+
+      <p class="lead">No reviews to display...</p>
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

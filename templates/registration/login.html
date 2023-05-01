@@ -1,0 +1,35 @@
+{% extends "PhoneReview/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Login - PhoneRadar{% endblock %}
+
+{% block heading %}
+
+{% if form.errors %}
+Your username and password didn't match. Please try again.
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+Your account doesn't have access to this page. To proceed, please login with an account that has access.
+{% else %}
+Please login to see this page.
+{% endif %}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" class="btn btn-primary" value="Login">
+  {% comment %} <input type="hidden" name="next" value="{{ next }}"> {% endcomment %}
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p class="pt-3"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+
+{% endblock %}

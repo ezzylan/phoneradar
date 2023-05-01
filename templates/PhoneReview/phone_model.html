@@ -1,0 +1,55 @@
+{% extends 'PhoneReview/base.html' %}
+
+{% block title %}{{ object.name }} - PhoneRadar{% endblock %}
+
+{% block heading %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-12 col-md-4 d-flex flex-column flex-sm-row flex-md-column flex-lg-row gap-3">
+    <img src="{{ MEDIA_URL }}{{ object.image }}" class="brand-img" alt="{{ object.name }} logo">
+
+    <div class="d-flex flex-column">
+      <h5>Origin</h5>
+      <p>{{ object.origin }}</p>
+      <h5>Manufacturing Date</h5>
+      <p>{{ object.manufacturing_date }}</p>
+    </div>
+  </div>
+
+  <hr class="d-md-none">
+
+  <div class="col-12 col-md-8 d-flex gap-3">
+    <div class="vr d-none d-md-block"></div>
+    <div class="d-flex flex-column">
+      {% if models %}
+
+      <h5 class="pb-2">All {{ object.name }} Models</h5>
+
+      <div class="row g-2">
+        {% for model in models %}
+        <div class="col-6 col-sm-3 col-md-4 col-lg-3 col-xxl-2">
+          <div class="card model-card">
+            <div class="ratio ratio-1x1">
+              <img src="{{ MEDIA_URL }}{{ model.image }}" class="card-img-top p-4" alt="{{ model.name }}">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ model.name }}</h5>
+              <a href="{{ model.get_absolute_url }}" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% else %}
+
+      <p class="lead">No models to display...</p>
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'PhoneReview/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Add New Review - PhoneRadar{% endblock %}
+
+{% block heading %}Add New Review{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+{% endblock %}

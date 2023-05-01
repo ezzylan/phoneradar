@@ -1,0 +1,15 @@
+{% extends "PhoneReview/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Up - PhoneRadar{% endblock %}
+
+{% block heading %}Sign Up{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" class="btn btn-primary" value="Sign Up">
+</form>
+{% endblock %}
