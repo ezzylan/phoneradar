@@ -43,7 +43,7 @@
 
             <div class="d-none d-sm-inline">
               {% if user.is_authenticated %}
-              {{ user.get_username }}
+              {{ user.username }}
               {% else %}
               Guest
               {% endif %}
@@ -52,7 +52,7 @@
           <div class="dropdown-menu dropdown-menu-end p-3">
             {% if user.is_authenticated %}
 
-            <p>{{ user.get_username }}</p>
+            <p>{{ user.username }}</p>
             <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Log Out</a>
 
             {% else %}
