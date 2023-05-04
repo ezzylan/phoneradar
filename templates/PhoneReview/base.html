@@ -69,6 +69,11 @@
   </nav>
 
   <main class="container p-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        {% block breadcrumb %}{% endblock %}
+      </ol>
+    </nav>
     <h3 class="pb-2">{% block heading %}{% endblock %}</h3>
     {% block content %}{% endblock %}
   </main>
